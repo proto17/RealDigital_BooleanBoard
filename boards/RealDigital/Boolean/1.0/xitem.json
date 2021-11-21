@@ -1,0 +1,33 @@
+{
+  "config": {
+    "items": [
+      {
+        "infra": {
+          "name": "boolean_s7",
+          "display": "Boolean S7", 
+          "revision": "1.0", 
+          "description": "Boolean S7", 
+          "company": "realdigital.org", 
+          "company_display": "RealDigital", 
+          "author": "RealDigital", 
+          "contributors": [
+            {
+              "group": "RealDigital", 
+              "url": "realdigital.org"
+            }
+          ], 
+          "category": "Single Part", 
+          "website": "https://www.realdigital.org/hardware/boolean", 
+          "search-keywords": [
+            "boolean", 
+            "realdigital.org", 
+            "board", 
+            "Single Part"
+          ]
+        }
+      }
+    ]
+  }, 
+  "_major": 1, 
+  "_minor": 0
+}

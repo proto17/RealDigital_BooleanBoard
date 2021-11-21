@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> 
+<board schema_version="2.0" vendor="realdigital.org" name="boolean_board" display_name="Boolean Board S7" url="http://www.realdigital.org/hardware/boolean" preset_file="preset.xml" >
+    <images>
+        <image name="boolean_board.png" display_name="Boolean Board S7" sub_type="board">
+            <description>Boolean Board File Image</description>
+        </image>
+    </images>
+    <compatible_board_revisions>
+        <revision id="0">1</revision>
+    </compatible_board_revisions>
+    <file_version>1.0</file_version>
+    <description>Boolean Board</description>
+    <components>
+        <component name="part0" display_name="Boolean Board" type="fpga" part_name="xc7s50csga324-1" pin_map_file="part0_pins.xml" vendor="xilinx" spec_url="http://www.realdigital.org/hardware/boolean">
+            <interfaces>
+
+                <interface mode="slave" name="clk_100mhz" type="xilinx.com:signal:clock_rtl:1.0" of_component="clk_100mhz" preset_proc="clk_100mhz_preset">
+                    <description>100 MHz System Clock</description>
+                    <parameters>
+                        <parameter name="frequency" value="100000000"/>
+                    </parameters>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="clk_wiz" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="clk" physical_port="clk_100mhz" dir="in">
+                            <pin_maps>
+                                <pin_map port_index="0" component_pin="clk_100mhz"/>
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="switch_16bit" type="xilinx.com:interface:gpio_rtl:1.0" of_component="switch_16bit" preset_proc="switch_16bit_preset">
+                    <description>16 DIP Switches</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_I" physical_port="switch_16bit_tri_i" dir="in" left="15" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="GPIO_DIP_SW0"/> 
+                                <pin_map port_index="1"  component_pin="GPIO_DIP_SW1"/> 
+                                <pin_map port_index="2"  component_pin="GPIO_DIP_SW2"/> 
+                                <pin_map port_index="3"  component_pin="GPIO_DIP_SW3"/> 
+                                <pin_map port_index="4"  component_pin="GPIO_DIP_SW4"/> 
+                                <pin_map port_index="5"  component_pin="GPIO_DIP_SW5"/> 
+                                <pin_map port_index="6"  component_pin="GPIO_DIP_SW6"/> 
+                                <pin_map port_index="7"  component_pin="GPIO_DIP_SW7"/> 
+                                <pin_map port_index="8"  component_pin="GPIO_DIP_SW8"/> 
+                                <pin_map port_index="9"  component_pin="GPIO_DIP_SW9"/> 
+                                <pin_map port_index="10" component_pin="GPIO_DIP_SW10"/> 
+                                <pin_map port_index="11" component_pin="GPIO_DIP_SW11"/> 
+                                <pin_map port_index="12" component_pin="GPIO_DIP_SW12"/> 
+                                <pin_map port_index="13" component_pin="GPIO_DIP_SW13"/> 
+                                <pin_map port_index="14" component_pin="GPIO_DIP_SW14"/> 
+                                <pin_map port_index="15" component_pin="GPIO_DIP_SW15"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="led_16bit" type="xilinx.com:interface:gpio_rtl:1.0" of_component="led_16bit" preset_proc="led_16bit_preset">
+                    <description>16 Single Color LEDs</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_O" physical_port="led_16bit_tri_o" dir="out" left="15" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="GPIO_LED_0"/> 
+                                <pin_map port_index="1"  component_pin="GPIO_LED_1"/> 
+                                <pin_map port_index="2"  component_pin="GPIO_LED_2"/> 
+                                <pin_map port_index="3"  component_pin="GPIO_LED_3"/> 
+                                <pin_map port_index="4"  component_pin="GPIO_LED_4"/> 
+                                <pin_map port_index="5"  component_pin="GPIO_LED_5"/> 
+                                <pin_map port_index="6"  component_pin="GPIO_LED_6"/> 
+                                <pin_map port_index="7"  component_pin="GPIO_LED_7"/> 
+                                <pin_map port_index="8"  component_pin="GPIO_LED_8"/> 
+                                <pin_map port_index="9"  component_pin="GPIO_LED_9"/> 
+                                <pin_map port_index="10" component_pin="GPIO_LED_10"/> 
+                                <pin_map port_index="11" component_pin="GPIO_LED_11"/> 
+                                <pin_map port_index="12" component_pin="GPIO_LED_12"/> 
+                                <pin_map port_index="13" component_pin="GPIO_LED_13"/> 
+                                <pin_map port_index="14" component_pin="GPIO_LED_14"/> 
+                                <pin_map port_index="15" component_pin="GPIO_LED_15"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="push_button_4bit" type="xilinx.com:interface:gpio_rtl:1.0" of_component="push_button_4bit" preset_proc="push_button_4bit_preset">
+                    <description>4 Push Buttons</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_I" physical_port="push_button_4bit_tri_o" dir="in" left="3" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="GPIO_PB_SW0"/> 
+                                <pin_map port_index="1"  component_pin="GPIO_PB_SW1"/> 
+                                <pin_map port_index="2"  component_pin="GPIO_PB_SW2"/> 
+                                <pin_map port_index="3"  component_pin="GPIO_PB_SW3"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+                
+                <interface mode="master" name="rgb_led_0" type="xilinx.com:interface:gpio_rtl:1.0" of_component="rgb_led_0" preset_proc="rgb_led_0_preset">
+                    <description>RGB LED 0</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_O" physical_port="rgb_led_0_tri_o" dir="in" left="2" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="GPIO_LED_0_RED"/> 
+                                <pin_map port_index="1"  component_pin="GPIO_LED_0_GREEN"/> 
+                                <pin_map port_index="2"  component_pin="GPIO_LED_0_BLUE"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="rgb_led_1" type="xilinx.com:interface:gpio_rtl:1.0" of_component="rgb_led_1" preset_proc="rgb_led_1_preset">
+                    <description>RGB LED 1</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_O" physical_port="rgb_led_1_tri_o" dir="in" left="2" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="GPIO_LED_1_RED"/> 
+                                <pin_map port_index="1"  component_pin="GPIO_LED_1_GREEN"/> 
+                                <pin_map port_index="2"  component_pin="GPIO_LED_1_BLUE"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="seven_segment_0" type="xilinx.com:interface:gpio_rtl:1.0" of_component="seven_segment_0" preset_proc="seven_segment_0_preset">
+                    <description>Seven Segment Display 0</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_O" physical_port="seven_segment_0_tri_o" dir="out" left="11" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="GPIO_7SEG_0_SEG_0"/> 
+                                <pin_map port_index="1"  component_pin="GPIO_7SEG_0_SEG_1"/> 
+                                <pin_map port_index="2"  component_pin="GPIO_7SEG_0_SEG_2"/> 
+                                <pin_map port_index="3"  component_pin="GPIO_7SEG_0_SEG_3"/> 
+                                <pin_map port_index="4"  component_pin="GPIO_7SEG_0_SEG_4"/> 
+                                <pin_map port_index="5"  component_pin="GPIO_7SEG_0_SEG_5"/> 
+                                <pin_map port_index="6"  component_pin="GPIO_7SEG_0_SEG_6"/> 
+                                <pin_map port_index="7"  component_pin="GPIO_7SEG_0_SEG_7"/> 
+                                <pin_map port_index="0"  component_pin="GPIO_7SEG_0_AN_0"/>
+                                <pin_map port_index="1"  component_pin="GPIO_7SEG_0_AN_1"/>
+                                <pin_map port_index="2"  component_pin="GPIO_7SEG_0_AN_2"/>
+                                <pin_map port_index="3"  component_pin="GPIO_7SEG_0_AN_3"/>
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="seven_segment_1" type="xilinx.com:interface:gpio_rtl:1.0" of_component="seven_segment_1" preset_proc="seven_segment_1_preset">
+                    <description>Seven Segment Display 1</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_O" physical_port="seven_segment_1_tri_o" dir="out" left="11" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="GPIO_7SEG_1_SEG_0"/> 
+                                <pin_map port_index="1"  component_pin="GPIO_7SEG_1_SEG_1"/> 
+                                <pin_map port_index="2"  component_pin="GPIO_7SEG_1_SEG_2"/> 
+                                <pin_map port_index="3"  component_pin="GPIO_7SEG_1_SEG_3"/> 
+                                <pin_map port_index="4"  component_pin="GPIO_7SEG_1_SEG_4"/> 
+                                <pin_map port_index="5"  component_pin="GPIO_7SEG_1_SEG_5"/> 
+                                <pin_map port_index="6"  component_pin="GPIO_7SEG_1_SEG_6"/> 
+                                <pin_map port_index="7"  component_pin="GPIO_7SEG_1_SEG_7"/> 
+                                <pin_map port_index="0"  component_pin="GPIO_7SEG_1_AN_0"/>
+                                <pin_map port_index="1"  component_pin="GPIO_7SEG_1_AN_1"/>
+                                <pin_map port_index="2"  component_pin="GPIO_7SEG_1_AN_2"/>
+                                <pin_map port_index="3"  component_pin="GPIO_7SEG_1_AN_3"/>
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="uart0" type="xilinx.com:interface:uart_rtl:1.0" of_component="uart0" preset_proc="uart0_preset">
+                    <description>USB to UART</description>
+                    <port_maps>
+                        <port_map logical_port="TxD" physical_port="uart0_tx" dir="out"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="uart0_out"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="RxD" physical_port="uart0_rx" dir="in"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="uart0_in"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="hdmi_out" type="digilentinc.com:interface:tmds_rtl:1.0" of_component="hdmi_out">
+                    <description>HDMI Out</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="digilentinc.com" library="ip" name="rgb2dvi" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="CLK_P" physical_port="TMDS_clk_p" dir="out">
+                            <pin_maps>
+                                <pin_map port_index="0" component_pin="hdmi_clk_p"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="CLK_N" physical_port="TMDS_clk_n" dir="out">
+                            <pin_maps>
+                                <pin_map port_index="0" component_pin="hdmi_clk_n"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="DATA_P" physical_port="TMDS_D_N" dir="out" left="2" right="0">
+                            <pin_maps>
+                                <pin_map port_index="0" component_pin="hdmi_tx_n_0"/> 
+                                <pin_map port_index="1" component_pin="hdmi_tx_n_1"/> 
+                                <pin_map port_index="2" component_pin="hdmi_tx_n_2"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="DATA_N" physical_port="TMDS_D_P" dir="out" left="2" right="0">
+                            <pin_maps>
+                                <pin_map port_index="0" component_pin="hdmi_tx_p_0"/> 
+                                <pin_map port_index="1" component_pin="hdmi_tx_p_1"/> 
+                                <pin_map port_index="2" component_pin="hdmi_tx_p_2"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="pmoda" type="xilinx.com:interface:gpio_rtl:1.0" of_component="pmoda" preset_proc="pmoda_preset">
+                    <description>8-Bit PMOD Connector (PMOD A)</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_I" physical_port="pmoda_tri_i" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmoda_1"/> 
+                                <pin_map port_index="1"  component_pin="pmoda_2"/> 
+                                <pin_map port_index="2"  component_pin="pmoda_3"/> 
+                                <pin_map port_index="3"  component_pin="pmoda_4"/> 
+                                <pin_map port_index="4"  component_pin="pmoda_5"/> 
+                                <pin_map port_index="5"  component_pin="pmoda_6"/> 
+                                <pin_map port_index="6"  component_pin="pmoda_7"/> 
+                                <pin_map port_index="7"  component_pin="pmoda_8"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_O" physical_port="pmoda_tri_o" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmoda_1"/> 
+                                <pin_map port_index="1"  component_pin="pmoda_2"/> 
+                                <pin_map port_index="2"  component_pin="pmoda_3"/> 
+                                <pin_map port_index="3"  component_pin="pmoda_4"/> 
+                                <pin_map port_index="4"  component_pin="pmoda_5"/> 
+                                <pin_map port_index="5"  component_pin="pmoda_6"/> 
+                                <pin_map port_index="6"  component_pin="pmoda_7"/> 
+                                <pin_map port_index="7"  component_pin="pmoda_8"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_T" physical_port="pmoda_tri_t" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmoda_1"/> 
+                                <pin_map port_index="1"  component_pin="pmoda_2"/> 
+                                <pin_map port_index="2"  component_pin="pmoda_3"/> 
+                                <pin_map port_index="3"  component_pin="pmoda_4"/> 
+                                <pin_map port_index="4"  component_pin="pmoda_5"/> 
+                                <pin_map port_index="5"  component_pin="pmoda_6"/> 
+                                <pin_map port_index="6"  component_pin="pmoda_7"/> 
+                                <pin_map port_index="7"  component_pin="pmoda_8"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="pmodb" type="xilinx.com:interface:gpio_rtl:1.0" of_component="pmodb" preset_proc="pmodb_preset">
+                    <description>8-Bit PMOD Connector (PMOD B)</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_I" physical_port="pmodb_tri_i" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmodb_1"/> 
+                                <pin_map port_index="1"  component_pin="pmodb_2"/> 
+                                <pin_map port_index="2"  component_pin="pmodb_3"/> 
+                                <pin_map port_index="3"  component_pin="pmodb_4"/> 
+                                <pin_map port_index="4"  component_pin="pmodb_5"/> 
+                                <pin_map port_index="5"  component_pin="pmodb_6"/> 
+                                <pin_map port_index="6"  component_pin="pmodb_7"/> 
+                                <pin_map port_index="7"  component_pin="pmodb_8"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_O" physical_port="pmodb_tri_o" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmodb_1"/> 
+                                <pin_map port_index="1"  component_pin="pmodb_2"/> 
+                                <pin_map port_index="2"  component_pin="pmodb_3"/> 
+                                <pin_map port_index="3"  component_pin="pmodb_4"/> 
+                                <pin_map port_index="4"  component_pin="pmodb_5"/> 
+                                <pin_map port_index="5"  component_pin="pmodb_6"/> 
+                                <pin_map port_index="6"  component_pin="pmodb_7"/> 
+                                <pin_map port_index="7"  component_pin="pmodb_8"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_T" physical_port="pmodb_tri_t" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmodb_1"/> 
+                                <pin_map port_index="1"  component_pin="pmodb_2"/> 
+                                <pin_map port_index="2"  component_pin="pmodb_3"/> 
+                                <pin_map port_index="3"  component_pin="pmodb_4"/> 
+                                <pin_map port_index="4"  component_pin="pmodb_5"/> 
+                                <pin_map port_index="5"  component_pin="pmodb_6"/> 
+                                <pin_map port_index="6"  component_pin="pmodb_7"/> 
+                                <pin_map port_index="7"  component_pin="pmodb_8"/> 
+                            </pin_maps>
+                        </port_map>
+
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="pmodc" type="xilinx.com:interface:gpio_rtl:1.0" of_component="pmodc" preset_proc="pmodc_preset">
+                    <description>8-Bit PMOD Connector (PMOD B)</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_I" physical_port="pmodc_tri_i" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmodc_1"/> 
+                                <pin_map port_index="1"  component_pin="pmodc_2"/> 
+                                <pin_map port_index="2"  component_pin="pmodc_3"/> 
+                                <pin_map port_index="3"  component_pin="pmodc_4"/> 
+                                <pin_map port_index="4"  component_pin="pmodc_5"/> 
+                                <pin_map port_index="5"  component_pin="pmodc_6"/> 
+                                <pin_map port_index="6"  component_pin="pmodc_7"/> 
+                                <pin_map port_index="7"  component_pin="pmodc_8"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_O" physical_port="pmodc_tri_o" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmodc_1"/> 
+                                <pin_map port_index="1"  component_pin="pmodc_2"/> 
+                                <pin_map port_index="2"  component_pin="pmodc_3"/> 
+                                <pin_map port_index="3"  component_pin="pmodc_4"/> 
+                                <pin_map port_index="4"  component_pin="pmodc_5"/> 
+                                <pin_map port_index="5"  component_pin="pmodc_6"/> 
+                                <pin_map port_index="6"  component_pin="pmodc_7"/> 
+                                <pin_map port_index="7"  component_pin="pmodc_8"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_T" physical_port="pmodc_tri_t" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmodc_1"/> 
+                                <pin_map port_index="1"  component_pin="pmodc_2"/> 
+                                <pin_map port_index="2"  component_pin="pmodc_3"/> 
+                                <pin_map port_index="3"  component_pin="pmodc_4"/> 
+                                <pin_map port_index="4"  component_pin="pmodc_5"/> 
+                                <pin_map port_index="5"  component_pin="pmodc_6"/> 
+                                <pin_map port_index="6"  component_pin="pmodc_7"/> 
+                                <pin_map port_index="7"  component_pin="pmodc_8"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="pmodd" type="xilinx.com:interface:gpio_rtl:1.0" of_component="pmodd" preset_proc="pmodd_preset">
+                    <description>8-Bit PMOD Connector (PMOD B)</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_I" physical_port="pmodd_tri_i" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmodd_1"/> 
+                                <pin_map port_index="1"  component_pin="pmodd_2"/> 
+                                <pin_map port_index="2"  component_pin="pmodd_3"/> 
+                                <pin_map port_index="3"  component_pin="pmodd_4"/> 
+                                <pin_map port_index="4"  component_pin="pmodd_5"/> 
+                                <pin_map port_index="5"  component_pin="pmodd_6"/> 
+                                <pin_map port_index="6"  component_pin="pmodd_7"/> 
+                                <pin_map port_index="7"  component_pin="pmodd_8"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_O" physical_port="pmodd_tri_o" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmodd_1"/> 
+                                <pin_map port_index="1"  component_pin="pmodd_2"/> 
+                                <pin_map port_index="2"  component_pin="pmodd_3"/> 
+                                <pin_map port_index="3"  component_pin="pmodd_4"/> 
+                                <pin_map port_index="4"  component_pin="pmodd_5"/> 
+                                <pin_map port_index="5"  component_pin="pmodd_6"/> 
+                                <pin_map port_index="6"  component_pin="pmodd_7"/> 
+                                <pin_map port_index="7"  component_pin="pmodd_8"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_T" physical_port="pmodd_tri_t" dir="inout" left="7" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="pmodd_1"/> 
+                                <pin_map port_index="1"  component_pin="pmodd_2"/> 
+                                <pin_map port_index="2"  component_pin="pmodd_3"/> 
+                                <pin_map port_index="3"  component_pin="pmodd_4"/> 
+                                <pin_map port_index="4"  component_pin="pmodd_5"/> 
+                                <pin_map port_index="5"  component_pin="pmodd_6"/> 
+                                <pin_map port_index="6"  component_pin="pmodd_7"/> 
+                                <pin_map port_index="7"  component_pin="pmodd_8"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="gpio0" type="xilinx.com:interface:gpio_rtl:1.0" of_component="gpio0" preset_proc="gpio_preset">
+                    <description>6-Bit GPIO (J1)</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_I" physical_port="gpio0_tri_i" dir="inout" left="5" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="gpio0_1"/> 
+                                <pin_map port_index="1"  component_pin="gpio0_2"/> 
+                                <pin_map port_index="2"  component_pin="gpio0_3"/> 
+                                <pin_map port_index="3"  component_pin="gpio0_4"/> 
+                                <pin_map port_index="4"  component_pin="gpio0_5"/> 
+                                <pin_map port_index="5"  component_pin="gpio0_6"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_O" physical_port="gpio0_tri_o" dir="inout" left="5" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="gpio0_1"/> 
+                                <pin_map port_index="1"  component_pin="gpio0_2"/> 
+                                <pin_map port_index="2"  component_pin="gpio0_3"/> 
+                                <pin_map port_index="3"  component_pin="gpio0_4"/> 
+                                <pin_map port_index="4"  component_pin="gpio0_5"/> 
+                                <pin_map port_index="5"  component_pin="gpio0_6"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_T" physical_port="gpio0_tri_t" dir="inout" left="5" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="gpio0_1"/> 
+                                <pin_map port_index="1"  component_pin="gpio0_2"/> 
+                                <pin_map port_index="2"  component_pin="gpio0_3"/> 
+                                <pin_map port_index="3"  component_pin="gpio0_4"/> 
+                                <pin_map port_index="4"  component_pin="gpio0_5"/> 
+                                <pin_map port_index="5"  component_pin="gpio0_6"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+                <interface mode="master" name="gpio1" type="xilinx.com:interface:gpio_rtl:1.0" of_component="gpio1" preset_proc="gpio_preset">
+                    <description>6-Bit GPIO (J2)</description>
+                    <preferred_ips>
+                        <preferred_ip vendor="xilinx.com" library="ip" name="axi_gpio" order="0"/>
+                    </preferred_ips>
+                    <port_maps>
+                        <port_map logical_port="TRI_I" physical_port="gpio1_tri_i" dir="inout" left="5" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="gpio1_1"/> 
+                                <pin_map port_index="1"  component_pin="gpio1_2"/> 
+                                <pin_map port_index="2"  component_pin="gpio1_3"/> 
+                                <pin_map port_index="3"  component_pin="gpio1_4"/> 
+                                <pin_map port_index="4"  component_pin="gpio1_5"/> 
+                                <pin_map port_index="5"  component_pin="gpio1_6"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_O" physical_port="gpio1_tri_o" dir="inout" left="5" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="gpio1_1"/> 
+                                <pin_map port_index="1"  component_pin="gpio1_2"/> 
+                                <pin_map port_index="2"  component_pin="gpio1_3"/> 
+                                <pin_map port_index="3"  component_pin="gpio1_4"/> 
+                                <pin_map port_index="4"  component_pin="gpio1_5"/> 
+                                <pin_map port_index="5"  component_pin="gpio1_6"/> 
+                            </pin_maps>
+                        </port_map>
+                        <port_map logical_port="TRI_T" physical_port="gpio1_tri_t" dir="inout" left="5" right="0"> 
+                            <pin_maps>
+                                <pin_map port_index="0"  component_pin="gpio1_1"/> 
+                                <pin_map port_index="1"  component_pin="gpio1_2"/> 
+                                <pin_map port_index="2"  component_pin="gpio1_3"/> 
+                                <pin_map port_index="3"  component_pin="gpio1_4"/> 
+                                <pin_map port_index="4"  component_pin="gpio1_5"/> 
+                                <pin_map port_index="5"  component_pin="gpio1_6"/> 
+                            </pin_maps>
+                        </port_map>
+                    </port_maps>
+                </interface>
+
+            </interfaces>
+        </component>
+        <component name="clk_100mhz" display_name="100 MHz System Clock" type="chip" sub_type="system_clock" major_group="Clocks">
+            <description>100 MHz System Clock</description>
+        </component>
+        <component name="switch_16bit" display_name="16 DIP Switches" type="chip" sub_type="push_button" major_group="gpio">
+            <description>16 DIP Switches</description>
+        </component>
+        <component name="led_16bit" display_name="16 Single Color LEDs" type="chip" sub_type="led" major_group="gpio">
+            <description>16 Single Color LEDs</description>
+        </component>
+        <component name="push_button_4bit" display_name="4 Push Buttons" type="chip" sub_type="push_button" major_group="gpio">
+            <description>4 Push Buttons</description>
+        </component>
+        <component name="rgb_led_0" display_name="RGB LED 0" type="chip" sub_type="led" major_group="gpio">
+            <description>First RGB LED</description>
+        </component>
+        <component name="rgb_led_1" display_name="RGB LED 1" type="chip" sub_type="led" major_group="gpio">
+            <description>Second RGB LED</description>
+        </component>
+        <component name="seven_segment_0" display_name="Seven Segment Display 0" type="chip" sub_type="led" major_group="gpio">
+            <description>First Seven Segment Display</description>
+        </component>
+        <component name="seven_segment_1" display_name="Seven Segment Display 1" type="chip" sub_type="led" major_group="gpio">
+            <description>Second Seven Segment Display</description>
+        </component>
+        <component name="uart0" display_name="USB to UART" type="chip" sub_type="uart" major_group="UART">
+            <description>USB to UART</description>
+        </component>
+        <component name="hdmi_out" display_name="TMDS HDMI Output" type="chip" sub_type="led" major_group="HDMI">
+            <description>HDMI Output</description>
+        </component>
+        <component name="pmoda" display_name="PMOD A Connector" type="chip" sub_type="led" major_group="gpio">
+            <description>PMOD A Connector</description>
+        </component>
+        <component name="pmodb" display_name="PMOD B Connector" type="chip" sub_type="led" major_group="gpio">
+            <description>PMOD B Connector</description>
+        </component>
+        <component name="pmodc" display_name="PMOD C Connector" type="chip" sub_type="led" major_group="gpio">
+            <description>PMOD C Connector</description>
+        </component>
+        <component name="pmodd" display_name="PMOD D Connector" type="chip" sub_type="led" major_group="gpio">
+            <description>PMOD D Connector</description>
+        </component>
+        <component name="gpio0" display_name="6-Bit GPIO (J1)" type="chip" sub_type="led" major_group="gpio">
+            <description>6-Bit GPIO (J1)</description>
+        </component>
+        <component name="gpio1" display_name="6-Bit GPIO (J2)" type="chip" sub_type="led" major_group="gpio">
+            <description>6-Bit GPIO (J2)</description>
+        </component>
+    </components>
+    <jtag_chains>
+        <jtag_chain name="chain1">
+            <position name="0" component="part0"/>
+        </jtag_chain>
+    </jtag_chains>
+    <connections>
+        <connection name="part0_clk_100mhz" component1="part0" component2="clk_100mhz">
+            <connection_map name="part0_clk_100mhz_1" c1_st_index="0" c1_end_index="0" c2_st_index="0" c2_end_index="0"/>
+        </connection>
+        <connection name="part0_switch_16bit" component1="part0" component2="switch_16bit">
+            <connection_map name="part0_switch_16bit_1" c1_st_index="1" c1_end_index="16" c2_st_index="0" c2_end_index="15"/>
+        </connection>
+        <connection name="part0_led_16bit" component1="part0" component2="led_16bit">
+            <connection_map name="part0_led_16bit_1" c1_st_index="17" c1_end_index="32" c2_st_index="0" c2_end_index="15"/>
+        </connection>
+        <connection name="part0_push_button_4bit" component1="part0" component2="push_button_4bit">
+            <connection_map name="part0_push_button_4bit_1" c1_st_index="33" c1_end_index="36" c2_st_index="0" c2_end_index="3"/>
+        </connection>
+        <connection name="part0_rgb_led_0" component1="part0" component2="rgb_led_0">
+            <connection_map name="part0_rgb_led_0_1" c1_st_index="37" c1_end_index="39" c2_st_index="0" c2_end_index="2"/>
+        </connection>
+        <connection name="part0_rgb_led_1" component1="part0" component2="rgb_led_1">
+            <connection_map name="part0_rgb_led_1_1" c1_st_index="40" c1_end_index="42" c2_st_index="0" c2_end_index="2"/>
+        </connection>
+        <connection name="part0_seven_segment_0" component1="part0" component2="seven_segment_0">
+            <connection_map name="part0_seven_segment_0_1" c1_st_index="43" c1_end_index="54" c2_st_index="0" c2_end_index="11"/>
+        </connection>
+        <connection name="part0_seven_segment_1" component1="part0" component2="seven_segment_1">
+            <connection_map name="part0_seven_segment_1_1" c1_st_index="55" c1_end_index="66" c2_st_index="0" c2_end_index="11"/>
+        </connection>
+        <connection name="part0_uart0" component1="part0" component2="uart0">
+            <connection_map name="part0_uart0_1" c1_st_index="67" c1_end_index="68" c2_st_index="0" c2_end_index="1"/>
+        </connection>
+        <connection name="part0_hdmi_out" component1="part0" component2="hdmi_out">
+            <connection_map name="part0_hdmi_out_1" c1_st_index="69" c1_end_index="76" c2_st_index="0" c2_end_index="7"/>
+        </connection>
+        <connection name="part0_pmoda" component1="part0" component2="pmoda">
+            <connection_map name="part0_pmoda_1" c1_st_index="87" c1_end_index="94" c2_st_index="0" c2_end_index="7"/>
+        </connection>
+        <connection name="part0_pmodb" component1="part0" component2="pmodb">
+            <connection_map name="part0_pmodb_1" c1_st_index="95" c1_end_index="102" c2_st_index="0" c2_end_index="7"/>
+        </connection>
+        <connection name="part0_pmodc" component1="part0" component2="pmodc">
+            <connection_map name="part0_pmodc_1" c1_st_index="103" c1_end_index="110" c2_st_index="0" c2_end_index="7"/>
+        </connection>
+        <connection name="part0_pmodd" component1="part0" component2="pmodd">
+            <connection_map name="part0_pmodd_1" c1_st_index="110" c1_end_index="117" c2_st_index="0" c2_end_index="7"/>
+        </connection>
+        <connection name="part0_gpio0" component1="part0" component2="gpio0">
+            <connection_map name="part0_gpio0_1" c1_st_index="118" c1_end_index="123" c2_st_index="0" c2_end_index="5"/>
+        </connection>
+        <connection name="part0_gpio1" component1="part0" component2="gpio1">
+            <connection_map name="part0_gpio1_1" c1_st_index="124" c1_end_index="129" c2_st_index="0" c2_end_index="5"/>
+        </connection>
+    </connections>
+</board>
