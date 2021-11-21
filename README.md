@@ -11,3 +11,7 @@ Currently there are no entries for the following:
 - Servo (there are no Vivado blocks that support PWM)
 - Audio Out (there are no Vivado blocks that support PWM)
 - Potentiometer (haven't gotten around to it)
+
+Headers J1 and J2 contain the four PMOD ports, but also contain 12 GPIO pins (6 on each header).  These pins fall between the PMOD ports.  They have been numbered in the board files to match how the PMOD ports are numbered (circular numbering).
+
+There is no "reset" port on this board, so when creating block designs the user will need to specify a reset port by hand.  If using one of the push buttons, be sure not to use the push button GPIO entry!
